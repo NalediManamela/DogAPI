@@ -7,13 +7,83 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="263dp"
+        android:layout_height="263dp"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="268dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="140dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="556dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="244dp"
+        tools:layout_editor_absoluteY="556dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="556dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="140dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteY="140dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="61dp"
+        android:layout_height="17dp"
+        android:text="Voting"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Breeds"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="192dp" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favs"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="192dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
