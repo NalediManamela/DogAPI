@@ -12,7 +12,7 @@
         android:layout_width="263dp"
         android:layout_height="263dp"
         tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="255dp"
+        tools:layout_editor_absoluteY="260dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
