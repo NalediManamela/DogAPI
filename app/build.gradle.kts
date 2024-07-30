@@ -47,4 +47,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.github.kittinunf.fuel:fuel-gson:2.3.1")
     implementation("com.google.code.gson:gson:2.8.7")
+    implementation ("com.github.kittinunf.fuel:fuel:2.3.1")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation ("com.github.bumptech.glide:compiler:4.12.0")
 }
