@@ -10,37 +10,46 @@
     <ImageView
         android:id="@+id/imageViewDog"
         android:layout_width="263dp"
-        android:layout_height="263dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="261dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnFav2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
         android:id="@+id/btnVoting"
         android:layout_width="55dp"
         android:layout_height="53dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="11dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/btnBreed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191"
         tools:srcCompat="@drawable/upanddown" />
 
     <ImageButton
         android:id="@+id/btnBreed"
         android:layout_width="47dp"
         android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="14dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/btnFavs"
+        app:layout_constraintStart_toEndOf="@+id/btnVoting"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188"
+        app:layout_constraintVertical_bias="0.58000004"
         tools:ignore="DuplicateIds"
         tools:srcCompat="@drawable/search" />
 
@@ -48,65 +57,91 @@
         android:id="@+id/btnFavs"
         android:layout_width="50dp"
         android:layout_height="54dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="11dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBreed"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188"
         tools:srcCompat="@drawable/heart" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="61dp"
-        android:layout_height="17dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="22dp"
         android:text="Voting"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageViewDog"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVoting" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="23dp"
         android:text="Breeds"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="192dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageViewDog"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/btnBreed" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="338dp"
         android:text="Fav"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="192dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnDislike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFavs" />
 
     <ImageButton
         android:id="@+id/btnLike"
-        android:layout_width="55dp"
-        android:layout_height="49dp"
+        android:layout_width="53dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/like"
-        tools:layout_editor_absoluteX="243dp"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btnDislike"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDog"
+        app:srcCompat="@drawable/like" />
 
     <ImageButton
         android:id="@+id/btnDislike"
-        android:layout_width="50dp"
-        android:layout_height="52dp"
+        android:layout_width="58dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="107dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/dislike"
-        tools:layout_editor_absoluteX="298dp"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDog"
+        app:srcCompat="@drawable/dislike" />
 
     <ImageButton
         android:id="@+id/btnFav2"
-        android:layout_width="52dp"
-        android:layout_height="56dp"
+        android:layout_width="75dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="134dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/heart"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="541dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnLike"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDog"
+        app:srcCompat="@drawable/heart" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -121,4 +156,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
