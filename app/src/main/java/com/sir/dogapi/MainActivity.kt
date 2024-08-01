@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageViewDog: ImageView
     private lateinit var btnVoting: ImageButton
     private lateinit var btnBreed: ImageButton
+    private lateinit var btnFavs: ImageButton
+    private lateinit var btnFav2: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,12 +33,21 @@ class MainActivity : AppCompatActivity() {
         imageViewDog = findViewById(R.id.imageViewDog)
         btnVoting = findViewById(R.id.btnVoting)
         btnBreed = findViewById(R.id.btnBreed)
+        btnFavs = findViewById(R.id.btnFavs)
+        btnFav2 = findViewById(R.id.btnFav2)
+
         btnVoting.setOnClickListener {
             fetchRandomdogImage()}
+
         btnBreed.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
+        btnFavs.setOnClickListener {
+            val intent = Intent(this, MainActivity3::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun fetchRandomdogImage() {
