@@ -62,8 +62,8 @@ class MainActivity2 : AppCompatActivity() {
             val connection = url.openConnection() as HttpURLConnection
             try {
                 val data = connection.inputStream.bufferedReader().readText()
-                val breedListType = object : TypeToken<List<DogImages>>() {}.type
-                val breedList: List<DogImages> = Gson().fromJson(data, breedListType)
+                val breedListType = object : TypeToken<List<Breed>>() {}.type
+                val breedList: List<Breed> = Gson().fromJson(data, breedListType)
                 breedList.forEach {
                     breeds[it.name] = it.id
                 }
@@ -79,8 +79,8 @@ class MainActivity2 : AppCompatActivity() {
             val connection = url.openConnection() as HttpURLConnection
             try {
                 val data = connection.inputStream.bufferedReader().readText()
-                val imageListType = object : TypeToken<List<Image>>() {}.type
-                val imageList: List<Image> = Gson().fromJson(data, imageListType)
+                val imageListType = object : TypeToken<List<DogImage>>() {}.type
+                val imageList: List<DogImage> = Gson().fromJson(data, imageListType)
                 val imageUrl = imageList.firstOrNull()?.url
 
                 runOnUiThread {

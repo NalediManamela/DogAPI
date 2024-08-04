@@ -1,11 +1,21 @@
-package com.sir.dogapi
+package com.sir.dogapi.api
 
-import android.telecom.Call
-import androidx.contentpager.content.Query
+import com.sir.dogapi.Breed
+import com.sir.dogapi.DogImage
+import com.sir.dogapi.Favourite
+import com.sir.dogapi.FavouriteRequest
+import com.sir.dogapi.FavouriteResponse
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.DELETE
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DogApiService {
     @GET("breeds")
-    fun getBreeds(): Call<List<DogImages>>
+    fun getBreeds(): Call<List<Breed>>
 
     @GET("images/search")
     fun getDogImages(@Query("breed_ids") breedId: String): Call<List<DogImage>>
@@ -18,4 +28,7 @@ interface DogApiService {
 
     @DELETE("favourites/{favouriteId}")
     fun deleteFavourite(@Path("favouriteId") favouriteId: String): Call<Void>
+
+
+
 }
