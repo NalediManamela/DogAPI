@@ -13,6 +13,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+
 interface DogApiService {
     @GET("breeds")
     fun getBreeds(): Call<List<Breed>>
@@ -28,6 +29,10 @@ interface DogApiService {
 
     @DELETE("favourites/{favouriteId}")
     fun deleteFavourite(@Path("favouriteId") favouriteId: String): Call<Void>
+
+
+
+
 
 
 

@@ -15,12 +15,9 @@ import org.json.JSONArray
 import com.bumptech.glide.Glide
 import com.sir.dogapi.api.DogApiService
 import okhttp3.Response
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnBreed: ImageButton
     private lateinit var btnFavs: ImageButton
     private lateinit var btnFav2: ImageButton
+    private lateinit var dogApiService: DogApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +45,11 @@ class MainActivity : AppCompatActivity() {
         btnFav2 = findViewById(R.id.btnFav2)
 
 
+        dogApiService = (application as MyApp).dogApiService
+
         btnVoting.setOnClickListener {
-            fetchRandomdogImage()}
+            fetchRandomdogImage()
+        }
 
         btnBreed.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
@@ -57,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         btnFavs.setOnClickListener {
             val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
+        }
+        btnFav2.setOnClickListener {
+
+
         }
 
     }
@@ -80,22 +85,9 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    private fun favouriteImage(imageId: String) {
-        val subId = "user-123" // Replace with actual user id
-        val request = FavouriteRequest(image_id = imageId, sub_id = subId)
 
-        DogApiService.createFavourite(request).enqueue(object : Callback<FavouriteResponse> {
-            override fun onResponse(call: Call<FavouriteResponse>, response: Response<FavouriteResponse>) {
-                if (response.isSuccessful) {
-                    // Image favorited successfully
-                    Toast.makeText(this@MainActivity2, "Image favorited!", Toast.LENGTH_SHORT).show()
-                }
-            }
 
-            override fun onFailure(call: Call<FavouriteResponse>, t: Throwable) {
-                // Handle error
-                Toast.makeText(this@MainActivity2, "Failed to favorite image", Toast.LENGTH_SHORT).show()
-            }
-        })
 
+
+    }
 }

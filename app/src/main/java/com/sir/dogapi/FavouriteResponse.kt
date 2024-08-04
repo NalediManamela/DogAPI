@@ -1,5 +1,6 @@
 package com.sir.dogapi
 
 data class FavouriteResponse(
-    val id: String
+    val id: Int,
+    val message: String
 )
