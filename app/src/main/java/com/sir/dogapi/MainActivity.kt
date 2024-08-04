@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnBreed: ImageButton
     private lateinit var btnFavs: ImageButton
     private lateinit var btnFav2: ImageButton
+    private lateinit var btnLike: ImageButton
+    private lateinit var btnDisLike: ImageButton
     private lateinit var dogApiService: DogApiService
     private var currentImageId: String? = null
     private val subId = "user-123" // Replace with actual user id
@@ -44,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         btnBreed = findViewById(R.id.btnBreed)
         btnFavs = findViewById(R.id.btnFavs)
         btnFav2 = findViewById(R.id.btnFav2)
+        btnLike= findViewById(R.id.btnLike)
+        btnDisLike= findViewById(R.id.btnDislike)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.thedogapi.com/v1/") // Use your base URL
@@ -70,6 +74,12 @@ class MainActivity : AppCompatActivity() {
             favouriteImage()
             fetchRandomdogImage()
 
+        }
+        btnLike.setOnClickListener{
+            fetchRandomdogImage()
+        }
+        btnDisLike.setOnClickListener{
+            fetchRandomdogImage()
         }
 
     }

@@ -1,5 +1,6 @@
 package com.sir.dogapi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.SearchView
@@ -9,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
@@ -19,6 +22,8 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var searchView: SearchView
     private lateinit var imageViewDog: ImageView
     private lateinit var textViewBreedName: TextView
+    private lateinit var btnVoting: ImageView
+    private lateinit var btnFavs: ImageView
 
     private val breeds = mutableMapOf<String, String>()
 
@@ -34,8 +39,22 @@ class MainActivity2 : AppCompatActivity() {
         searchView = findViewById(R.id.SearchView)
         imageViewDog = findViewById(R.id.imageViewDog)
         textViewBreedName = findViewById(R.id.textViewBreedName)
+        btnVoting = findViewById(R.id.btnVoting)
+        btnFavs = findViewById(R.id.btnFavs)
+
+        btnVoting.setOnClickListener {
+            fetchRandomdogImage()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnFavs.setOnClickListener {
+            val intent = Intent(this, MainActivity3::class.java)
+            startActivity(intent)
+        }
 
         fetchBreeds()
+
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -96,6 +115,25 @@ class MainActivity2 : AppCompatActivity() {
             } finally {
                 connection.disconnect()
             }
+        }
+    }
+    private fun fetchRandomdogImage() {
+        val url = "https://api.thedogapi.com/v1/images/search"
+
+        Fuel.get(url).response { _, _, result ->
+            result.fold({ data ->
+                val response = String(data)
+                val jsonArray = JSONArray(response)
+                val imageUrl = jsonArray.getJSONObject(0).getString("url")
+
+                runOnUiThread {
+
+                    Glide.with(this).load(imageUrl).into(imageViewDog)
+                }
+            }, { error ->
+                error.printStackTrace()
+            })
+
         }
     }
 }
