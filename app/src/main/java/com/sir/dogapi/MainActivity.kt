@@ -2,7 +2,6 @@ package com.sir.dogapi
 
 import android.content.Intent
 import android.os.Bundle
-import android.telecom.Call
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
@@ -14,11 +13,11 @@ import com.github.kittinunf.fuel.Fuel
 import org.json.JSONArray
 import com.bumptech.glide.Glide
 import com.sir.dogapi.api.DogApiService
-import okhttp3.Response
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import retrofit2.Call
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnFavs: ImageButton
     private lateinit var btnFav2: ImageButton
     private lateinit var dogApiService: DogApiService
+    private var currentImageId: String? = null
+    private val subId = "user-123" // Replace with actual user id
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +45,14 @@ class MainActivity : AppCompatActivity() {
         btnFavs = findViewById(R.id.btnFavs)
         btnFav2 = findViewById(R.id.btnFav2)
 
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.thedogapi.com/v1/") // Use your base URL
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-        dogApiService = (application as MyApp).dogApiService
+        dogApiService = retrofit.create(DogApiService::class.java)
+
+
 
         btnVoting.setOnClickListener {
             fetchRandomdogImage()
@@ -60,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnFav2.setOnClickListener {
-
+            favouriteImage()
+            fetchRandomdogImage()
 
         }
 
@@ -86,8 +94,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun favouriteImage() {
+        currentImageId?.let { imageId ->
+            val request = FavouriteRequest(image_id = imageId, sub_id = subId)
+            dogApiService.createFavourite(request).enqueue(object : Callback<FavouriteResponse> {
+                override fun onResponse(
+                    call: Call<FavouriteResponse>,
+                    response: Response<FavouriteResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@MainActivity, "Image favorited!", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Failed to favorite image",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<FavouriteResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "An error occurred: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
 
 
-
+        }
     }
 }
